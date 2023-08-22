@@ -72,3 +72,20 @@ def MyCrud():
 
 app = FastAPI()
 
+from pymongo import MongoClient
+
+
+#copy and pasting the mongodb URI
+uri="mongodb+srv://admin:admin123@reactpytask01.x88beev.mongodb.net/" 
+
+client=MongoClient(uri)
+#defining the db name
+db=client["Reactpy_Task01"]
+collection=db["Reactpy-Task01"]
+
+#checking the connection
+try:
+    client.admin.command("ping")
+    print("successfully connected Mongodb")
+except Exception as e:
+    print(e)
